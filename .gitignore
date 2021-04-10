@@ -1,3 +1,4 @@
 /.idea
 /venv
 training_data.csv
+shape_predictor_68_face_landmarks.dat
