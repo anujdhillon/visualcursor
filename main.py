@@ -82,15 +82,15 @@ while(True):
         eyes = np.concatenate((left_eye, right_eye), axis=1)
         eyes_data = (eyes.flatten())
         topredict = eyes_data.reshape((1,1080))
-    x = modelx.predict(topredict)[0][0]
-    y = modely.predict(topredict)[0][0]
+    x = int((modelx.predict(topredict)[0][0]) + 1012)
+    y = int((modely.predict(topredict)[0][0]) + 543)
     pyautogui.moveTo(x, y)
     cv2.imshow("mask", eyes)
     key = cv2.waitKey(10)
     if(key == 27):
         break
     elif key % 256 == 32:
-        # SPACE pressed
+# SPACE pressed
         with open('training_data.csv', 'a+', newline='') as file:
             writer = csv.writer(file)
             x, y = pyautogui.position()
